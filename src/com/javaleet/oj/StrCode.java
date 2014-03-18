@@ -16,11 +16,14 @@ public class StrCode {
 		StringBuffer tmp = new StringBuffer("");
 		int i = 0, index = 0;
 		while (i < s.length()) {
+			/*last string won't be added into the list, we need add it to list later*/
 			if (s.charAt(i) != ' ') {
 				tmp.append(s.charAt(i));
 			} else {
-				ls.add(tmp.toString());
-				tmp.delete(0, tmp.length());
+				if (tmp.length() != 0) {
+					ls.add(tmp.toString());
+					tmp.delete(0, tmp.length());
+				}
 			}
 			/*if (s.charAt(i) != ' ') {
 				ret.insert(index, s.charAt(i));
@@ -41,20 +44,20 @@ public class StrCode {
 			}*/
 			i++;
 		}
+		if (tmp.length() != 0) {
+			ls.add(tmp.toString());
+		}
 		i = ls.size();
 		while (i > 0) {
 			ret.append(ls.get(i - 1)).append(" ");
 			i--;
 		}
-        return s.length() > 0 ? ret.substring(0, ret.length() - 1) : s;
+		if (ret.length() == 0) {
+			ret.append(" ");
+		}
+		return ret.substring(0, ret.length() - 1);
+       // return s.length() > 0 ? ret.substring(0, ret.length() - 1) : s;
     }
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//String ss = "the sky is blue";
-		//String ss = "eqfeabrm.!zibb'lf.vtyu,fa jbxiw,anv";
-		String ss = "a";
-		StrCode sc = new StrCode();
-		System.out.println(sc.reverseWords(ss));
-	}
+	
 
 }
