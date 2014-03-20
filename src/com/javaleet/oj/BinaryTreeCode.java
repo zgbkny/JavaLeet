@@ -1,6 +1,8 @@
 package com.javaleet.oj;
 
 import java.util.ArrayList;
+import java.util.Stack;
+
 import com.javaleet.entity.TreeNode;
 
 public class BinaryTreeCode {
@@ -34,5 +36,33 @@ public class BinaryTreeCode {
 			}
 		}
         return ret;
+    }
+	private void postVisitNode(ArrayList<Integer> list, TreeNode root) {
+		if (root.left != null) postVisitNode(list, root.left);
+		if (root.right != null) postVisitNode(list, root.right);
+		list.add(root.val);
+	}
+	public ArrayList<Integer> postorderTraversal(TreeNode root) {
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		if (root != null) {
+			if (root.left != null) postVisitNode(ret, root.left);
+			if (root.right != null) postVisitNode(ret, root.right);
+			ret.add(root.val);
+		}
+		return ret;
+    }
+	private void preVisitNode(ArrayList<Integer> list, TreeNode root) {
+		list.add(root.val);
+		if (root.left != null) preVisitNode(list, root.left);
+		if (root.right != null) preVisitNode(list, root.right);
+	}
+	public ArrayList<Integer> preorderTraversal(TreeNode root) {
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		if (root != null) {
+			ret.add(root.val);
+			if (root.left != null) preVisitNode(ret, root.left);
+			if (root.right != null) preVisitNode(ret, root.right);
+		}
+		return ret;
     }
 }
