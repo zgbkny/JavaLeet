@@ -1,6 +1,8 @@
 package com.javaleet.oj;
 
 import java.awt.Point;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.javaleet.entity.ListNode;
 import com.javaleet.entity.TreeNode;
@@ -62,10 +64,20 @@ public class OJtest {
 		ListCode lc = new ListCode();
 		lc.reorderList(node1);
 	}
+	public static void testWordBreak() {
+		Set<String> dict = new HashSet<String>();
+		dict.add("a");
+	//	dict.add("aaa");
+	//	dict.add("and");
+//		dict.add("sand");
+	//	dict.add("dog");
+		DicCode dc = new DicCode();
+		System.out.println(dc.wordBreak2("a", dict));
+	}
 	public static void main(String[] args) {
 		//testEvalRPN();
 		//testMaxPoints();
 		//testLRU();
-		testReorderList();
+		testWordBreak();
 	}
 }
